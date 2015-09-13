@@ -9,5 +9,6 @@ but, Script for the environment variable settings, tooooooooooo bad.
 LIBRARY_PATH=<CURRENT_PATH>/lib
 ```
 
-What? You're talking nonsense, lol.
+What? You're talking nonsense.
 
+fx
