@@ -3,10 +3,10 @@
 # To make properly if the exercise of copyright, intel guys?
 #
 
-# Cleanup install path
+# Declaration install path
 PROD_DIR="/opt/intel/mac"
 
-# Cleanup arch flags
+# Reset arch env
 TARGET_ARCH=
 TARGET_PLATFORM=linux
 
@@ -16,31 +16,36 @@ if [ -e $PROD_DIR/bin/intel64/icl_fbsd.cfg ]; then
   TARGET_PLATFORM=freebsd
 fi
 
-
 COMPILERVARS_ARGV=$#
 if [ $# -eq 0 ]; then
+  # When set $COMPILERVARS_ARCHITECTURE, TARGET_ARCH = $COMPILERVARS_ARCHITECTURE
   if [ "$COMPILERVARS_ARCHITECTURE" != '' ]; then
     TARGET_ARCH=$COMPILERVARS_ARCHITECTURE
   fi
+  # When set $COMPILERVARS_PLATFORM, TARGET_PLATFORM = $COMPILERVARS_PLATFORM
   if [ "$COMPILERVARS_PLATFORM" != '' ]; then
     TARGET_PLATFORM=$COMPILERVARS_PLATFORM
   fi
 fi
 
+# -arch and -platform flags
 while [ $# -gt 0 ]
 do
   opt="$1"
   case $opt in 
+    # When set -arch flag, arch is ARGV[1]
     -arch)
       shift
       TARGET_ARCH="$1"
       shift
       ;;
+    # When set -platform flag, platform is ARGV[1] 
     -platform)
       shift
       TARGET_PLATFORM="$1"
       shift
-      ;; 
+      ;;
+    # Default is arch
     *)
       TARGET_ARCH="$1"
       shift
@@ -92,7 +97,7 @@ if [ "$TARGET_PLATFORM" = "mac" ]; then
 fi
 
 if [ $COMPILERVARS_ARGV -eq 0 ] ; then
-  #pass default values via COMPILERVARS_*
+  # pass default values via COMPILERVARS_*
   if [ "$COMPILERVARS_ARCHITECTURE" = '' ]; then
     COMPILERVARS_ARCHITECTURE=$TARGET_ARCH
   fi
