@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-source ../compilervars.sh
+source ./compilervars.sh
 
 echo $LIBRARY_PATH
 
