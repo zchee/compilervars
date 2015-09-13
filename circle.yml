@@ -1,0 +1,21 @@
+machine:
+
+  timezone:
+    Asia/Tokyo
+  services:
+    - docker
+
+dependencies:
+  override:
+    # - go get github.com/aktau/github-release 
+    - docker info
+
+test:
+  override:
+    - .ci/build.sh
+
+# deployment:
+#   production:
+#     branch: master
+#     commands:
+#       - ./deploy.sh
