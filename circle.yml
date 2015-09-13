@@ -1,14 +1,13 @@
 machine:
-
   timezone:
     Asia/Tokyo
-  services:
-    - docker
+  # services:
+  #   - docker
 
 dependencies:
   override:
     # - go get github.com/aktau/github-release 
-    - docker info
+    # - docker info
 
 test:
   override:
